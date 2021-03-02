@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   query: string;
   artists: object;
 
+
   showArtist(artist) {
     artist.highlight = !artist.highlight;
     if (artist.name === this.query) {
@@ -36,7 +37,6 @@ export class AppComponent implements OnInit {
 
   constructor( private http: HttpClient ) {
     this.query = '';
-    this.artists = [];
   }
 
   ngOnInit(): void {
