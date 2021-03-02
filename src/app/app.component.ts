@@ -24,6 +24,7 @@ export class AppComponent {
   artists: object;
 
   showArtist(artist) {
+    artist.highlight = !artist.highlight;
     if (artist.name === this.query) {
       this.query = '';
     } else {
