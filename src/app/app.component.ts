@@ -20,29 +20,25 @@ import { HttpClient } from '@angular/common/http';
     `,
   ],
 })
-
 export class AppComponent implements OnInit {
   query: string;
   artists: object;
-
+  currentArtist: object;
 
   showArtist(artist) {
     artist.highlight = !artist.highlight;
-    if (artist.name === this.query) {
-      this.query = '';
-    } else {
-      this.query = artist.name;
-    }
+
+    this.query = artist.name;
+    this.currentArtist = artist;
   }
 
-  constructor( private http: HttpClient ) {
+  constructor(private http: HttpClient) {
     this.query = '';
   }
 
   ngOnInit(): void {
-    this.http.get<Object>('../assets/data.json').subscribe( data => {
+    this.http.get<Object>('../assets/data.json').subscribe((data) => {
       this.artists = data;
-    })
+    });
   }
-
 }
